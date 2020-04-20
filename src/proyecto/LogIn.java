@@ -49,8 +49,8 @@ public class LogIn extends javax.swing.JFrame {
                 if(resultado == 1) {
                     // Aqui llamamos a la proxima Interfaz
                     JOptionPane.showMessageDialog(null, "Success " + txtUsuario.getText());
-                    /*Principal p = new Principal();
-                    p.setVisible(true);*/
+                    Principal p = new Principal();
+                    p.setVisible(true);
                     this.dispose();
                 }
             } else {
