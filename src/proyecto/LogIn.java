@@ -20,6 +20,9 @@ import connectionSQL.*;
  */
 public class LogIn extends javax.swing.JFrame {
     
+    connectionMySQL cmsql = new connectionMySQL();
+    Connection connection = cmsql.connection();
+    
     /**
      * Creates new form LogIn
      */
@@ -242,6 +245,11 @@ public class LogIn extends javax.swing.JFrame {
     private void jLabelSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSalirMouseClicked
         // TODO add your handling code here:
         //this.setState(LogIn.ICONIFIED);
+        int dialog = JOptionPane.YES_NO_OPTION;
+        int result = JOptionPane.showConfirmDialog(null, "¿Desea salir?", "Exit", dialog);
+        if(result == 0) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jLabelSalirMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
