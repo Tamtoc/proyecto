@@ -32,7 +32,34 @@ public class LogIn extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    
+    public void validateAccess() {  
+        int resultado = 0;
+        
+        try {
+            String user = txtUsuario.getText();
+            String pass = String.valueOf(txtPass.getPassword());
+            String sql = "select * from usuario where nombre='" +user+ "' and contrasena='"+pass+"' ";
+
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                resultado = 1;
+
+                if(resultado == 1) {
+                    // Aqui llamamos a la proxima Interfaz
+                    JOptionPane.showMessageDialog(null, "Success " + txtUsuario.getText());
+                    /*Principal p = new Principal();
+                    p.setVisible(true);*/
+                    this.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Error de acceso, vuelva a intentar");
+            }
+        } catch(Exception e) {
+                            JOptionPane.showMessageDialog(null, "Error de acceso, vuelva a intentar" + e.getMessage());
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -253,7 +280,7 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelSalirMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        
+        validateAccess();
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**
